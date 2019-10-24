@@ -1,10 +1,10 @@
-function showFullLinks() {
+const showFullLinks = () => {
     const grams = document.querySelectorAll('main article');
 
-    grams.forEach(function (gram) {
+    grams.forEach(gram => {
         const images = gram.querySelectorAll('img[srcset]');
 
-        images.forEach(function (image) {
+        images.forEach(image => {
             // Get full url from srcset
             const fullURL = image.srcset.split(',').pop().split(' ').shift();
 
@@ -24,8 +24,6 @@ function showFullLinks() {
                 link.target = "_blank";
                 link.appendChild(image);
 
-                console.log(parent);
-
                 // Add to parent
                 parent.appendChild(link);
             }
@@ -34,6 +32,7 @@ function showFullLinks() {
     });
 }
 
+showFullLinks();
 
 // Select the node that will be observed for mutations
 const target = document.querySelector('main > section > div');
@@ -59,5 +58,3 @@ const observer = new MutationObserver(callback);
 
 // Start observing the target node for configured mutations
 observer.observe(target, config);
-
-showFullLinks();
